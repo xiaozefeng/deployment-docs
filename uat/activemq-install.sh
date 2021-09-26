@@ -15,7 +15,7 @@ mv /usr/local/apache-activemq-5.15.15/conf/activemq.xml /usr/local/apache-active
 wget http://files.union-market.cn/activemq.xml -O /usr/local/apache-activemq-5.15.15/conf/activemq.xml
 
 mv /usr/local/apache-activemq-5.15.15/conf/credentials.properties /usr/local/apache-activemq-5.15.15/conf/credentials-backup.properties
-cat <<EOF > a.txt
+cat <<EOF >/usr/local/apache-activemq-5.15.15/conf/credentials.properties
 ## ---------------------------------------------------------------------------
 ## Licensed to the Apache Software Foundation (ASF) under one or more
 ## contributor license agreements.  See the NOTICE file distributed with
