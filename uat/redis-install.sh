@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -f "/usr/bin/redis-server" ]; then
+    echo "redis server already exitst"
+    exit 0
+fi
+
 # 1. download
 yum install -y wget
 wget http://download.redis.io/releases/redis-5.0.12.tar.gz
@@ -26,6 +31,4 @@ wget http://files.union-market.cn/redis.conf -O /etc/redis.conf
 # 7. start redis server
 /usr/bin/redis-server /etc/redis.conf
 
-
 /usr/bin/redis-server -v
-

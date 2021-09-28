@@ -2,12 +2,17 @@
 
 set -e
 
+if [ -d "/usr/local/nginx" ]; then
+    echo "nginx already exists"
+    exit 0
+fi
+
 # downlaod
 yum install -y wget
 wget http://files.union-market.cn/nginx-1.20.1.tar.gz
 
 # extract tar package
-tar zxf nginx-1.20.1
+tar zxf nginx-1.20.1.tar.gz
 
 # install requirements
 yum install \
@@ -24,7 +29,7 @@ yum install \
     GeoIP-devel
 
 # cmpile
-nginx-1.20.1
+cd nginx-1.20.1
 
 ./configure \
     --with-pcre \
@@ -70,4 +75,4 @@ ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 # check
 nginx -v
 
-nginx -t 
+nginx -t

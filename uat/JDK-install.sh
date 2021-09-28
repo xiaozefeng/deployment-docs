@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -d "/usr/local/jdk1.8.0_281" ]; then
+    echo "/usr/local/jdk1.8.0_281 already exists"
+    exit 0
+fi
+
 yum install -y wget
 wget http://files.union-market.cn/jdk-8u281-linux-x64.tar.gz
 

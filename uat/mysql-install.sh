@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -f "/etc/yum.repos.d/mysql-community.repo" ]; then
+    echo "/etc/yum.repos.d/mysql-community.repo already exits"
+    exit 0
+fi
+
 # 1. download rpm package
 yum install -y wget
 wget http://files.union-market.cn/mysql57-community-release-el7-11.noarch.rpm
@@ -96,6 +101,5 @@ EOF
 
 # 6. start mysql server
 systemctl enable --now mysqld
-
 
 systemctl status mysqld

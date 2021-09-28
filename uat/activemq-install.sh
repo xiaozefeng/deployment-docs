@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -d "/usr/local/apache-activemq-5.15.15" ]; then
+    echo "/usr/local/apache-activemq-5.15.15 already exists"
+    exit 0
+fi
+
 # 1. download
 yum install -y wget
 wget https://dlcdn.apache.org//activemq/5.15.15/apache-activemq-5.15.15-bin.tar.gz
