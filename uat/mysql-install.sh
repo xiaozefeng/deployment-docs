@@ -12,50 +12,15 @@ yum install -y wget
 wget http://files.union-market.cn/mysql57-community-release-el7-11.noarch.rpm
 
 # 2. localinstall
-yum localinstall mysql57-community-release-el7-11.noarch.rpm
+yum localinstall -y mysql57-community-release-el7-11.noarch.rpm
 
 # 3. write config
-mv /etc/yum.repos.d/mysql-community.repo /etc/yum.repos.d/mysql-community-backup.repo
+mv /etc/yum.repos.d/mysql-community.repo /etc/yum.repos.d/mysql-community.repo.backup
 
-cat <<EOF >/etc/yum.repos.d/mysql-community.repo
-[mysql-connectors-community]
-name=MySQL Connectors Community
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-connectors-community-el7-$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
-
-[mysql-tools-community]
-name=MySQL Tools Community
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-tools-community-el7-$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
-
-[mysql-5.6-community]
-name=MySQL 5.6 Community Server
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-5.6-community-el7-$basearch/
-enabled=0
-gpgcheck=1
-gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
-
-[mysql-5.7-community]
-name=MySQL 5.7 Community Server
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-5.7-community-el7-$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
-
-[mysql-8.0-community]
-name=MySQL 8.0 Community Server
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-8.0-community-el7-$basearch/
-enabled=0
-gpgcheck=1
-gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql
-EOF
+wget http://files.union-market.cn/mysql-community.repo -O /etc/yum.repos.d/mysql-community.repo
 
 # 4. starting install mysql server
-yum install mysql-community-server
+yum install -y mysql-community-server
 
 # 5. mysql server config
 cat <<EOF >/etc/my.cnf
