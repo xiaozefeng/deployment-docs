@@ -18,7 +18,7 @@ yum localinstall mysql57-community-release-el7-11.noarch.rpm
 mv /etc/yum.repos.d/mysql-community.repo /etc/yum.repos.d/mysql-community-backup.repo
 
 cat <<EOF >/etc/yum.repos.d/mysql-community.repo
-
+[mysql-connectors-community]
 name=MySQL Connectors Community
 baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-connectors-community-el7-$basearch/
 enabled=1
